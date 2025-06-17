@@ -1,16 +1,33 @@
 CC-Helper makes sure that you keep count on the distribution of tickets along CS/TS/PSE members
 
-IMPORTANT:
-Please note that since this is not official extension release and it cannot be found in the Market
 
-YOU WILL HAVE TO KEEP THE FILES ON YOUR LOCAL DEVICE. 
 
-If you want it to work of course! :) 
-----
-Thanks to Vasil D. \n
-Updated by Stefan G.
+## Setup instructions
 
-CHANGELOG:
+    1. Download the repo in a ZOP
+    2. Extract the ZIP
+    3. Load extension in Chrome:
+
+        - Go to chrome://extensions/
+        - Enable "Developer mode"
+        - Click "Load unpacked" and select the folder where you 
+        extracted the ZIP.
+        - (Optional) Pin the extension
+
+You're done!
+
+## Author
+
+- Vasil Dachev
+
+
+## Contributing
+
+
+- Stefan Georgiev
+
+
+## Changelog
 
 v1.1:
 - Updated the names in the list

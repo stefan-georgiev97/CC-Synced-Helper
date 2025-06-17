@@ -2,8 +2,6 @@ const supabaseUrl = 'https://iyvbhidqylxrmrqzivok.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml5dmJoaWRxeWx4cm1ycXppdm9rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAxNTgyNzQsImV4cCI6MjA2NTczNDI3NH0.2RYOlb4XGwFy5Zg8naD92cfWalibjVghITeBga_KTkk';
 
 const restUrl = supabaseUrl + '/rest/v1/counters';
-const realtimeUrl = 'wss://iyvbhidqylxrmrqzivok.supabase.co/realtime/v1/websocket?apikey=' + supabaseKey + '&vsn=1.0.0';
-
 const headers = {
   'apikey': supabaseKey,
   'Authorization': 'Bearer ' + supabaseKey,
@@ -39,7 +37,7 @@ async function loadCounters() {
 }
 
 async function saveCounter(name) {
-  await fetch(restUrl, {
+  await fetch(restUrl + "?on_conflict=name", {
     method: 'POST',
     headers,
     body: JSON.stringify([{ name, count: counters[name] }]),
@@ -76,47 +74,10 @@ toggleTeamButton.addEventListener("click", () => {
   chrome.storage.local.set({ currentTeam });
 });
 
-// PURE WebSocket for realtime updates:
-function connectWebSocket() {
-  const socket = new WebSocket(realtimeUrl);
+// 🕰 Poll every 3 seconds to refresh data from Supabase
+setInterval(() => {
+  loadCounters();
+}, 3000);
 
-  socket.onopen = () => {
-    const joinMsg = {
-      topic: "realtime:public:counters",
-      event: "phx_join",
-      payload: {},
-      ref: "1"
-    };
-    socket.send(JSON.stringify(joinMsg));
-
-    // ✅ THIS IS THE KEY PART
-    const subscribeMsg = {
-      topic: "realtime:public:counters",
-      event: "postgres_changes",
-      payload: {
-        event: "*",
-        schema: "public",
-        table: "counters",
-        filter: ""
-      },
-      ref: "2"
-    };
-    socket.send(JSON.stringify(subscribeMsg));
-  };
-
-  socket.onmessage = (event) => {
-    const data = JSON.parse(event.data);
-    if (data.event === "postgres_changes" && data.payload) {
-      const { name, count } = data.payload.new;
-      counters[name] = count;
-      updateCounters();
-    }
-  };
-
-  socket.onclose = () => {
-    setTimeout(connectWebSocket, 2000); // auto-reconnect on disconnect
-  };
-}
-
-connectWebSocket();
+// Load initially
 loadCounters();

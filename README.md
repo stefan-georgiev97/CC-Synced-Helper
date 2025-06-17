@@ -7,7 +7,7 @@ YOU WILL HAVE TO KEEP THE FILES ON YOUR LOCAL DEVICE.
 
 If you want it to work ofcourse! :) 
 ----
-Thanks to Vasil D.
+Thanks to Vasil D. \n
 Updated by Stefan G.
 
 CHANGELOG:

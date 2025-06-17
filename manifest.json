@@ -29,5 +29,10 @@
       "default_popup": "/popup.html",
       "default_title": "CC-Helper"
     },
-    "content_security_policy": {}
+    "host_permissions": [
+      "https://iyvbhidqylxrmrqzivok.supabase.co/"
+    ],
+    "content_security_policy": {
+      "extension_pages": "script-src 'self' 'unsafe-eval' 'wasm-unsafe-eval'; object-src 'self'"
+    }
 }

@@ -1,4 +1,3 @@
-
 const supabaseUrl = 'https://iyvbhidqylxrmrqzivok.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml5dmJoaWRxeWx4cm1ycXppdm9rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAxNTgyNzQsImV4cCI6MjA2NTczNDI3NH0.2RYOlb4XGwFy5Zg8naD92cfWalibjVghITeBga_KTkk';
 
@@ -89,6 +88,20 @@ function connectWebSocket() {
       ref: "1"
     };
     socket.send(JSON.stringify(joinMsg));
+
+    // ✅ THIS IS THE KEY PART
+    const subscribeMsg = {
+      topic: "realtime:public:counters",
+      event: "postgres_changes",
+      payload: {
+        event: "*",
+        schema: "public",
+        table: "counters",
+        filter: ""
+      },
+      ref: "2"
+    };
+    socket.send(JSON.stringify(subscribeMsg));
   };
 
   socket.onmessage = (event) => {
@@ -101,7 +114,7 @@ function connectWebSocket() {
   };
 
   socket.onclose = () => {
-    setTimeout(connectWebSocket, 2000); // auto-reconnect
+    setTimeout(connectWebSocket, 2000); // auto-reconnect on disconnect
   };
 }
 

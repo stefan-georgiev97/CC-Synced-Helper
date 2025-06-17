@@ -1,0 +1,33 @@
+{
+    "manifest_version": 3,
+    "options_page": "/popup.html",
+    "permissions": [
+      "tabs",
+      "activeTab"
+    ],
+    "name": "CC-Helper",
+    "description": "CC-Helper makes sure that you keep count on the distribution of tickets along TS/PSE members",
+    "version": "1.2",
+    "permissions": ["activeTab", "storage"],
+    "icons": {
+      "16": "/icons/icon.png",
+      "48": "/icons/icon.png",
+      "128": "/icons/icon.png"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "<all_urls>"
+        ], 
+        "css": [
+          "main.css"
+        ]
+      }
+    ],
+    "action": {
+      "default_icon": "/icons/icon.png",
+      "default_popup": "/popup.html",
+      "default_title": "CC-Helper"
+    },
+    "content_security_policy": {}
+}

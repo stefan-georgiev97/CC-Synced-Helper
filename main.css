@@ -1,0 +1,81 @@
+@font-face {
+    font-family: "Quicksand"; 
+    src: url('font/Quicksand-Regular.ttf'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+.body-CC-Helper{
+    background: linear-gradient(180deg,rgba(255,255,255,0) 0%,#ece2ff 100%);
+}
+.header-CC-Helper {
+    text-align: center;
+    font-family: Quicksand;
+}
+
+.button-container-CC-helper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-container-CC-helper button {
+    width: 150px;
+    height: 50px;
+    margin: 5px;
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background-color: #c4fdf3;
+    color: #1b004e;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: Quicksand;
+    transition: background-color 1s;
+    transition: color 0.7s;
+}
+
+.button-container-CC-helper button:hover {
+  background-color: #1b004e;
+  color: #fff;
+}
+.resetButton-CC-Helper{
+    background-color: #1b004e; 
+    color: #fff; 
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: Quicksand;
+}
+.resetButton-CC-Helper:hover{
+    background-color: #c0392b;
+}
+.toggleTeamButton-CC-Helper{
+    width: 35px;
+    height: 15px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: #c4fdf3;
+    color: #1b004e;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: Quicksand;
+    transition: background-color 1s, transform 0.2s, color 0.7s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.toggleTeamButton-CC-Helper:hover {
+    background-color: #1b004e;
+    color: #fff;
+  }

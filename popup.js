@@ -37,9 +37,12 @@ async function loadCounters() {
 }
 
 async function saveCounter(name) {
-  await fetch(restUrl + "?on_conflict=name", {
+  await fetch(restUrl, {
     method: 'POST',
-    headers,
+    headers: {
+      ...headers,
+      'Prefer': 'resolution=merge-duplicates'
+    },
     body: JSON.stringify([{ name, count: counters[name] }]),
   });
 }
@@ -74,10 +77,10 @@ toggleTeamButton.addEventListener("click", () => {
   chrome.storage.local.set({ currentTeam });
 });
 
-// 🕰 Poll every 3 seconds to refresh data from Supabase
+// Poll every 3 seconds to refresh data from Supabase
 setInterval(() => {
   loadCounters();
 }, 3000);
 
-// Load initially
+// Initial load
 loadCounters();

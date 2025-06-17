@@ -5,14 +5,13 @@ Please note that since this is not official extension release and it cannot be f
 
 YOU WILL HAVE TO KEEP THE FILES ON YOUR LOCAL DEVICE. 
 
-If you want it to work ofcourse! :) 
-<br/><br/>
-Thanks to Vasil D. <br/>
+If you want it to work of course! :) 
+----
+Thanks to Vasil D. \n
 Updated by Stefan G.
-<br/><br/>
 
 CHANGELOG:
----
+
 v1.1:
 - Updated the names in the list
 

@@ -34,3 +34,6 @@ v1.1:
 
 v2:
 - New sync logic inplemented, aiming to have a real-time sync for all Co-Catchers
+
+v2.1:
+- Updated the reset button to only reset the number of tickets for the active team.

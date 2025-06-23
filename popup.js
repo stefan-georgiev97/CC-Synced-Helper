@@ -17,8 +17,7 @@ let currentTeam = "team1";
 const counters = {};
 
 const nameList = document.getElementById("nameList-CC-Helper");
-const resetButtonTeam1 = document.getElementById("resetButtonTeam1");
-const resetButtonTeam2 = document.getElementById("resetButtonTeam2");
+const resetButton = document.getElementById("resetButton-CC-Helper");
 const toggleTeamButton = document.getElementById("toggleTeamButton-CC-Helper");
 
 chrome.storage.local.get("currentTeam", (result) => {
@@ -48,13 +47,14 @@ async function saveCounter(name) {
   });
 }
 
-async function resetCounters(team) {
-  teams[team].forEach(name => {
+async function resetCounters() {
+  teams[currentTeam].forEach(name => {
     counters[name] = 0;
     saveCounter(name);
   });
   updateCounters();
 }
+
 
 function updateCounters() {
   nameList.innerHTML = "";
@@ -70,8 +70,7 @@ function updateCounters() {
   });
 }
 
-resetButtonTeam1.addEventListener("click", () => resetCounters("team1"));
-resetButtonTeam2.addEventListener("click", () => resetCounters("team2"));
+resetButton.addEventListener("click", resetCounters);
 
 toggleTeamButton.addEventListener("click", () => {
   currentTeam = currentTeam === "team1" ? "team2" : "team1";

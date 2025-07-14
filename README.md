@@ -4,7 +4,7 @@ CC-Helper makes sure that you keep count on the distribution of tickets along CS
 
 ## Setup instructions
 
-    1. Download the repo in a ZOP
+    1. Download the repo in a ZIP
     2. Extract the ZIP
     3. Load extension in Chrome:
 
